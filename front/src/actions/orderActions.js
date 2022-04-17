@@ -19,7 +19,7 @@ import {
 } from '../constants/orderConstants'
 
 import {CLEAR_CART} from '../constants/cartConstants'
-
+import {proxy} from '../../package.json';
 
 
 export const placedOrder =(order) => async (dispatch,getState)=>{
@@ -41,7 +41,7 @@ export const placedOrder =(order) => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.post(
-        'http://127.0.0.1:8000/api/orders/add/',
+        '${proxy}/api/orders/add/',
         order,
         configuration
         )
@@ -88,7 +88,7 @@ export const getOrderDetails =(id) => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.get(
-        `http://127.0.0.1:8000/api/orders/${id}/`,
+        `${proxy}/api/orders/${id}/`,
         configuration
         )
 
@@ -129,7 +129,7 @@ const configuration = {
 }
 // console.log(configuration)
 const {data} =await axios.put(
-        `http://127.0.0.1:8000/api/orders/${id}/pay/`,{},
+        `${proxy}/api/orders/${id}/pay/`,{},
         configuration
         )
 
@@ -168,7 +168,7 @@ const configuration = {
       }
 }
 const {data} =await axios.get(
-        `http://127.0.0.1:8000/api/orders/all/`,
+        `${proxy}/api/orders/all/`,
         configuration
         )
 
