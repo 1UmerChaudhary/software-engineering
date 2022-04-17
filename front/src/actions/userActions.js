@@ -40,7 +40,6 @@ from '../constants/userConstants';
 import {ALL_ORDERS_RESET}from '../constants/orderConstants';
 
 import axios from 'axios'
-import {proxy} from '../../package.json';
 
 
 export const loginUser =(email,password) => async (dispatch)=>{
@@ -57,7 +56,7 @@ export const loginUser =(email,password) => async (dispatch)=>{
     }
 
     const {data} =await axios.post(
-        '${proxy}/api/users/login/',
+        '/api/users/login/',
         {'username': email, 'password':password},
         configuration
         )
@@ -113,7 +112,7 @@ export const registerUser =(name,email,password) => async (dispatch)=>{
     }
 
     const {data} =await axios.post(
-        '${proxy}/api/users/register/',
+        '/api/users/register/',
         {'name':name,'email': email, 'password':password},
         configuration
         )
@@ -160,7 +159,7 @@ export const detailedUser =() => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.get(
-        '${proxy}/api/users/profile/',
+        '/api/users/profile/',
         configuration
         )
 
@@ -201,7 +200,7 @@ export const updatedUser =(name,email,password) => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.put(
-        '${proxy}/api/users/profile/update/',
+        '/api/users/profile/update/',
         {'name':name,'email': email, 'password':password},
         configuration
         )
@@ -246,7 +245,7 @@ export const listUser =() => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.get(
-        '${proxy}/api/users/',
+        '/api/users/',
         configuration
         )
 
@@ -284,7 +283,7 @@ export const userDeleted =(id) => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.delete(
-        `${proxy}/api/users/delete/${id}/`,
+        `/api/users/delete/${id}/`,
         configuration
         )
 
@@ -322,7 +321,7 @@ export const getUser =(id) => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.get(
-        `${proxy}/api/users/${id}/`,
+        `/api/users/${id}/`,
         configuration
         )
 
@@ -360,7 +359,7 @@ export const modifyUser =(id,name,email,admin) => async (dispatch,getState)=>{
     }
 
     const {data} =await axios.put(
-        `${proxy}/api/users/update/${id}/`,
+        `/api/users/update/${id}/`,
         {'name':name,'email': email, 'is_Admin':admin},
         configuration
         )

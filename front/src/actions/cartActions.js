@@ -5,7 +5,6 @@ import {
     SAVE_SHIPPING_ADDRESS,
     SAVE_PAYMENT_METHOD,
 } from '../constants/cartConstants';
-import {proxy} from '../../package.json';
 
 export const addToCart = (id,qty) => async (dispatch, getState ) => {
     const { data } = await axios.get(`/api/products/${id}`)

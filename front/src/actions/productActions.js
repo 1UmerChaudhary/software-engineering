@@ -12,7 +12,6 @@ import {
     PRODUCT_DELETE_FAIL
 } 
 from '../constants/productConstants';
-import {proxy} from '../../package.json';
 
 import axios from 'axios'
 
@@ -20,7 +19,7 @@ export const listProducts=()=>async (dispatch)=>{
 
     try{
     dispatch({type:PRODUCT_LIST_REQUEST})
-    const {data} =await axios.get('${proxy}/api/products/')
+    const {data} =await axios.get('/api/products/')
     dispatch({type:PRODUCT_LIST_SUCCESS,
               payload:data})
         }
@@ -38,7 +37,7 @@ export const listProducts=()=>async (dispatch)=>{
 export const DetailedProduct=(id)=>async (dispatch)=>{
     try{
     dispatch({type:PRODUCT_DETAILS_REQUEST})
-    const {data} =await axios.get(`${proxy}/api/products/${id}`)
+    const {data} =await axios.get(`/api/products/${id}`)
     dispatch({type:PRODUCT_DETAILS_SUCCESS,
               payload:data})
         }
@@ -71,7 +70,7 @@ export const deleteProduct=(id)=>async (dispatch,getState)=>{
     }
 
     const {data} =await axios.delete(
-        `${proxy}/api/products/delete/${id}`,
+        `/api/products/delete/${id}`,
         configuration
     )
     dispatch(
