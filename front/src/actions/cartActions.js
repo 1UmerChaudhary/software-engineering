@@ -8,7 +8,7 @@ import {
 import {proxy} from '../../package.json';
 
 export const addToCart = (id,qty) => async (dispatch, getState ) => {
-    const { data } = await axios.get(`${proxy}/api/products/${id}`)
+    const { data } = await axios.get(`/api/products/${id}`)
     //console.log("aagaya idher bhii",id,qty,data._id,data.name,data.price)
     
     dispatch({
@@ -27,7 +27,7 @@ export const addToCart = (id,qty) => async (dispatch, getState ) => {
 }        
 
 export const removeFromCart = (id) => async (dispatch, getState ) => {
-    const { data } = await axios.get(`${proxy}/api/products/${id}`)
+    const { data } = await axios.get(`/api/products/${id}`)
     
     
     dispatch({
